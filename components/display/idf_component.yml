@@ -1,0 +1,4 @@
+# Display is optional and disabled by default (stub only).
+# LVGL/u8g2 deps were removed: they pulled large libraries into every build
+# even when CONFIG_DISPLAY_ENABLED is off. Re-add if a screen is enabled.
+dependencies: {}
