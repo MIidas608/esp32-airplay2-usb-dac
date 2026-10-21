@@ -69,10 +69,10 @@ OTA 升级仅覆盖程序分区（app）。修改网页（storage 分区）后�
 - [Espressif](https://github.com/espressif) —— ESP-IDF、usb_host_uac、esp_audio_codec
 - [Shairport Sync](https://github.com/mikebrady/shairport-sync) 与 [openairplay/airplay2-receiver](https://github.com/openairplay/airplay2-receiver) —— AirPlay 协议的参考实现（上游项目的参考来源）
 
-## 许可证
+## 许可证与免责
 
-本仓库继承上游 [rbouteiller/airplay-esp32](https://github.com/rbouteiller/airplay-esp32) 的非商业许可，仅限非商业用途。商用需要联系上游作者。详见 [LICENSE](LICENSE)。
+本项目继承上游 [rbouteiller/airplay-esp32](https://github.com/rbouteiller/airplay-esp32) 的非商业许可，仅限非商业用途，商用需联系上游作者。详见 [LICENSE](LICENSE)。
 
-## 免责声明
+本项目通过协议逆向分析实现，与 Apple Inc. 无任何关联，非官方产品，也未获其授权。"AirPlay" 是 Apple Inc. 的商标，此处仅作功能说明使用。AirPlay 2 音频流带 FairPlay 加密，在部分法域（例如美国 DMCA 反规避条款）实现解密可能存在法律争议，建议仅用于个人学习和非商业用途。
 
-本项目基于协议分析，与 Apple Inc. 无关。不保证兼容未来的 iOS / macOS 版本，按原样提供，不附带任何担保。具体见 [DISCLAIMER.md](DISCLAIMER.md)。
+代码按原样提供，不附带任何担保，不保证兼容未来的 iOS / macOS 版本，使用造成的损失由使用者自行承担。
