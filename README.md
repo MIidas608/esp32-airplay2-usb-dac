@@ -21,7 +21,7 @@
 
 ## 构建
 
-需要 ESP-IDF 5.5.x。
+需要 ESP-IDF 5.5.3 或更高版本（开发时用的是 5.5.5）。
 
 ```bash
 git clone https://github.com/MIidas608/esp32-airplay2-usb-dac.git
@@ -30,22 +30,24 @@ idf.py set-target esp32s3
 idf.py build
 ```
 
-依赖组件（usb_host_uac、mdns、esp_audio_codec、libsodium 等）在首次构建时自动下载。
+构建时会从组件仓库自动下载 mdns、esp_audio_codec、libsodium、led_strip 等依赖。`usb_host_uac`、`usb`、`cmake_utilities` 已经放在 `components/` 下，不走自动下载。
 
 ## 烧录
-
-程序和网页分属两个分区，都需要烧录。
 
 ```bash
 idf.py -p COMx flash
 ```
 
-网页位于 storage 分区，构建产物为 `build/storage.bin`，也可用 esptool 单独烧录：
+一条命令会烧完 bootloader、分区表、程序（app）和网页（storage/SPIFFS）。网页能被一起烧是因为 `CMakeLists.txt` 里给 SPIFFS 镜像加了 `FLASH_IN_PROJECT`。
 
-```
-app:     0x20000   build/airplay2-receiver.bin
-storage: 0x620000  build/storage.bin
-```
+要单独更新某个分区（例如只换网页）时，用 esptool 按偏移烧：
+
+| 内容 | 偏移 | 产物 |
+|---|---|---|
+| 程序 | `0x20000` | `build/airplay2-receiver.bin` |
+| 网页 | `0x620000` | `build/storage.bin` |
+
+分区表用 `components/boards/partitions.csv`（8MB 版）：两个 3MB 的 app 分区（OTA 双区）+ 一个 1.875MB 的 storage 分区。
 
 首次启动会进入配置热点（SSID 形如 ESP32-AirPlay-Setup）。连接后访问 `http://192.168.4.1` 配置 WiFi，完成后设备会出现在 iPhone 的 AirPlay 列表中。
 
