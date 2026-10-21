@@ -24,7 +24,7 @@
 需要 ESP-IDF 5.5.x。
 
 ```bash
-git clone https://github.com/Miidas608/esp32-airplay2-usb-dac.git
+git clone https://github.com/MIidas608/esp32-airplay2-usb-dac.git
 cd esp32-airplay2-usb-dac
 idf.py set-target esp32s3
 idf.py build
